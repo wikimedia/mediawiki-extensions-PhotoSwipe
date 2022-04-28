@@ -19,18 +19,18 @@ This is a MediaWiki extension that adds <code>&lt;photoswipe&gt;</code> tag to p
 
 This defines values for each section of configuration. <code>$wgPhotoSwipeConfig</code></tvar> is an associative array of mixed values, with each sub-value having zero or more of the following parameters.
 
-| parameter     | type              | default       | description |
-| ------------- | ----------------- | ------------- | ---- |
-| mode          | string            | 'recommended' | Adjusts the usage of PhotoSwipe library. Possible values: ['recommended'](https://photoswipe.com/getting-started/#initialization), ['withoutDynamicImport'](https://photoswipe.com/getting-started/#without-dynamic-import), ['withoutLightbox'](https://photoswipe.com/data-sources/#without-lightbox-module) |
-| options       | object            | [library recommendation](https://photoswipe.com/getting-started/#initialization) | The <code>options</code> object passed into the <code>PhotoSwipeLightbox</code> instance. |
-| addBeginning  | string            | ''            | Additional JavaScript to add in the beginning. |
-|               | array of strings  | []            | An array of strings of JavaScript to add. |
-| addEventables | string            | ''            | Additional JavaScript to add in the middle. |
-|               | array of strings  | []            | An array of strings of JavaScript to add. |
-| addEnd        | string            | ''            | Additional JavaScript to add in the end. |
-|               | array of strings  | []            | An array of strings of JavaScript to add. |
-| plugins       | array of strings  | []            | An array of strings of names of plugins to enable with default options. See <code>PhotoSwipeVendorList</code>. |
-|               | object of options | {}            | An object of keys of plugins to enable with custom options. The values are the <code>options</code> object passed to the plugin library. |
+| parameter     | type              | description |
+| ------------- | ----------------- | ----------- |
+| mode          | string            | Adjusts the usage of PhotoSwipe library. Possible values: ['recommended'](https://photoswipe.com/getting-started/#initialization), ['withoutDynamicImport'](https://photoswipe.com/getting-started/#without-dynamic-import), ['withoutLightbox'](https://photoswipe.com/data-sources/#without-lightbox-module) |
+| options       | object            | The <code>options</code> object passed into the <code>PhotoSwipeLightbox</code> instance. |
+| addBeginning  | string            | Additional JavaScript to add in the beginning. |
+|               | array of strings  | An array of strings of JavaScript to add. |
+| addEventables | string            | Additional JavaScript to add in the middle. |
+|               | array of strings  | An array of strings of JavaScript to add. |
+| addEnd        | string            | Additional JavaScript to add in the end. |
+|               | array of strings  | An array of strings of JavaScript to add. |
+| plugins       | array of strings  | An array of strings of names of plugins to enable with default options. See <code>PhotoSwipeVendorList</code>. |
+|               | object of options | An object of keys of plugins to enable with custom options. The values are the <code>options</code> object passed to the plugin library. |
 
 For example, in your LocalSettings.php: (note: make sure to \ escape all $ in string values containing JavaScript)
 
