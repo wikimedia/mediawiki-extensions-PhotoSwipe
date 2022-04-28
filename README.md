@@ -158,11 +158,11 @@ For example, in your LocalSettings.php: (note: make sure to \ escape all $ in st
 
 Note: Images and gallery content not included.
 
-Use extension configuration by default
+### Use extension configuration by default
 
 <code>&lt;photoswipe/&gt;</code>
 
-Use argument configuration (overrides extension configuration)
+### Use argument configuration (overrides extension configuration)
 
     <photoswipe
       mode=recommended
@@ -211,7 +211,7 @@ Use argument configuration (overrides extension configuration)
         }
       }" />
 
-Use content configuration (overrides extension configuration and argument configuration)
+### Use content configuration (overrides extension configuration and argument configuration)
 
 Note: Comments and multi-line strings are permitted here
 
