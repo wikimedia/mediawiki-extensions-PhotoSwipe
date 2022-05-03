@@ -176,18 +176,19 @@ Note: Images and gallery content not included.
         &quot;wheelToZoom&quot;: true,
         &quot;zoom&quot;: false
       }"
-      addBeginning="document.querySelectorAll(&apos;table.gallery img&apos;).forEach((e,i) =&gt; {
-        if (e.parentElement.tagName !== &apos;A&apos;) {
-          document.querySelectorAll(&apos;img&apos;)[i].outerHTML = `&lt;a href=&quot;${e.src}&quot; data-my-size=&quot;${e.naturalWidth}x${e.naturalHeight}&quot;&gt;${e.outerHTML}&lt;/a&gt;`;
+      addBeginning="document.querySelectorAll( &apos;table.gallery img&apos; ).forEach( ( e, i ) =&gt; {
+        if ( e.parentElement.tagName !== &apos;A&apos; ) {
+          document.querySelectorAll( &apos;img&apos; )[ i ].outerHTML = `&lt;a class='img' href=&quot;${e.src}&quot; data-my-size=&quot;${e.naturalWidth}x${e.naturalHeight}&quot;&gt;${e.outerHTML}&lt;/a&gt;`;
         }
-      });"
-      "addEventables": [
-        "const backEasing = { in: &apos;cubic-bezier(0.6, -0.28, 0.7, 1)&apos;, out: &apos;cubic-bezier(0.3, 0, 0.32, 1.275)&apos;, inOut: &apos;cubic-bezier(0.68, -0.55, 0.265, 1.55)&apos; }",
-        "lightbox.on( &apos;firstUpdate&apos;, () =&gt; { lightbox.pswp.options.easing = backEasing.out; } );",
-        "lightbox.on( &apos;initialZoomInEnd&apos;, () =&gt; { lightbox.pswp.options.easing = backEasing.inOut; } );",
-        "lightbox.on( &apos;close&apos;, () =&gt; { lightbox.pswp.options.easing = backEasing.in; } );",
-        "lightbox.addFilter( &apos;domItemData&apos;, ( itemData, element, linkEl ) =&gt; { if ( linkEl ) { const sizeAttr = linkEl.dataset.mySize; itemData.src = linkEl.href; itemData.w = Number( sizeAttr.split( &apos;x&apos; )[ 0 ] ); itemData.h = Number( sizeAttr.split( &apos;x&apos; )[ 1 ] ); itemData.msrc = linkEl.dataset.thumbSrc; itemData.thumbCropped = true; } return itemData; } );"
-      ],
+      } );"
+      addEventables="[
+        &quot;const backEasing = { in: &apos;cubic-bezier(0.6, -0.28, 0.7, 1)&apos;, out: &apos;cubic-bezier(0.3, 0, 0.32, 1.275)&apos;, inOut: &apos;cubic-bezier(0.68, -0.55, 0.265, 1.55)&apos; }&quot;,
+        &quot;lightbox.on( &apos;firstUpdate&apos;, () =&gt; { lightbox.pswp.options.easing = backEasing.out; } );&quot;,
+        &quot;lightbox.on( &apos;initialZoomInEnd&apos;, () =&gt; { lightbox.pswp.options.easing = backEasing.inOut; } );&quot;,
+        &quot;lightbox.on( &apos;close&apos;, () =&gt; { lightbox.pswp.options.easing = backEasing.in; } );&quot;,
+        &quot;lightbox.addFilter( &apos;domItemData&apos;, ( itemData, element, linkEl ) =&gt; { if ( linkEl ) { const sizeAttr = linkEl.dataset.mySize; itemData.src = linkEl.href; itemData.w = Number( sizeAttr.split( &apos;x&apos; )[ 0 ] ); itemData.h = Number( sizeAttr.split( &apos;x&apos; )[ 1 ] ); itemData.msrc = linkEl.dataset.thumbSrc; itemData.thumbCropped = true; } return itemData; } );&quot;
+      ]"
+      addEnd="[]"
       plugins="{
         &quot;DeepZoomPlugin&quot;: {
           &quot;enabled&quot;: true,
