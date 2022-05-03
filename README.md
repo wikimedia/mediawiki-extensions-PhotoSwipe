@@ -210,7 +210,8 @@ Note: Images and gallery content not included.
           &quot;enabled&quot;: true,
           &quot;options&quot;: {}
         }
-      }" />
+      }"
+    />
 
 ### Use content configuration (overrides extension configuration and argument configuration)
 
