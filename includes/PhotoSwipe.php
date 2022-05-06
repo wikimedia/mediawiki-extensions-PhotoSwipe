@@ -186,7 +186,7 @@ class PhotoSwipe {
 	 * @param PPFrame &$frame
 	 * @return string HTML
 	 */
-	public static function renderTagPhotoSwipe( &$input, array &$args, Parser &$parser, PPFrame &$frame ) {
+	public static function renderTagPhotoSwipe( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$extension = self::getConfigValue( 'PhotoSwipeConfig' );
 		$errors = array();
 
