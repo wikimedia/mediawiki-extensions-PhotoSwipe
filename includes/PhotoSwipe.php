@@ -145,7 +145,7 @@ class PhotoSwipe {
 			}
 
 			if ( v::arrayType()->validate( $value, ) ) {
-				foreach ( json_decode( $value, /* $assoc = */ true ) as $k => $v ) {
+				foreach ( $value as $k => $v ) {
 					if ( !v::stringType()->validate( $v ) ) {
 						$valid = false;
 					}
