@@ -100,10 +100,6 @@
 		]
 	},
 	"config": {
-		"PhotoSwipeLibrary": {
-			"value": "MyVal",
-			"description": "Enables the foo functionality"
-		},
 		"PhotoSwipeConfig": {
 			"value": {
 				"mode": "recommended",
