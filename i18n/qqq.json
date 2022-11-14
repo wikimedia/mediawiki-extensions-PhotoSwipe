@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+		]
+	},
+	"photoswipe-desc": "{{desc|name=PhotoSwipe|url=https://www.mediawiki.org/wiki/Extension:PhotoSwipe}}",
+	"photoswipe-invalid-config-all": "{{notranslate}}",
+	"photoswipe-invalid-config-json": "Used as error message",
+	"photoswipe-invalid-config-key": "Used as error message",
+	"photoswipe-invalid-config-keyvalue": "Used as error message"
+}

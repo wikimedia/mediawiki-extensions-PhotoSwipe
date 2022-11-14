@@ -22,8 +22,9 @@
  * @file
  */
 
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This is a MediaWiki extension, and must be run from within MediaWiki.' );
+}
 
 // namespace PhotoSwipe;
 
@@ -69,7 +70,7 @@ class PhotoSwipe {
 	 * @param string &$resource The configuration resource (extension, attribute, or content)
 	 * @param string &$key The name of the key
 	 * @param mixed &$value The value of the key
-	 * @return boolean
+	 * @return bool
 	 */
 	protected function isValidConfig( string &$resource, string &$key, &$value ) {
 		/*
@@ -78,14 +79,14 @@ class PhotoSwipe {
 		 * See https://github.com/wikimedia/mediawiki/blob/master/includes/registration/ExtensionRegistry.php#L372
 		 */
 
-		$validKeys = array_map( 'strtolower', array(
+		$validKeys = array_map( 'strtolower', [
 			'mode',
 			'options',
 			'addBeginning',
 			'addEventables',
 			'addEnd',
 			'plugins'
-		) );
+		] );
 		if ( !v::in( $validKeys )->validate( $key ) ) {
 			// https://mediawiki.org/wiki/Manual:Messages_API#Using_messages_in_PHP
 			return wfMessage( 'photoswipe-invalid-config-key' )
@@ -95,20 +96,20 @@ class PhotoSwipe {
 
 		unset( $validArrayValues, $validValueType );
 		if ( $key === 'mode' ) {
-			$validArrayValues = array_map( 'strtolower', array(
+			$validArrayValues = array_map( 'strtolower', [
 				'recommended', // https://photoswipe.com/getting-started/#initialization
 				'withoutDynamicImport', // https://photoswipe.com/getting-started/#without-dynamic-import
 				'withoutLightbox' // https://photoswipe.com/data-sources/#without-lightbox-module
-			) );
-		} else if ( $key === 'options' ) {
+			] );
+		} elseif ( $key === 'options' ) {
 			$validValueType = 'isArray';
-		} else if ( $key === 'addbeginning' ) {
+		} elseif ( $key === 'addbeginning' ) {
 			$validValueType = 'isStringorArrayofStrings';
-		} else if ( $key === 'addeventables' ) {
+		} elseif ( $key === 'addeventables' ) {
 			$validValueType = 'isStringorArrayofStrings';
-		} else if ( $key === 'addend' ) {
+		} elseif ( $key === 'addend' ) {
 			$validValueType = 'isStringorArrayofStrings';
-		} else if ( $key === 'plugins' ) {
+		} elseif ( $key === 'plugins' ) {
 			$validValueType = 'isArray';
 		}
 
@@ -129,16 +130,16 @@ class PhotoSwipe {
 			if ( !v::in( $validArrayValues )->validate( strtolower( $value ) ) ) {
 				$valid = false;
 			}
-		} else if ( $validValueType === 'isArray' ) {
+		} elseif ( $validValueType === 'isArray' ) {
 			// https://respect-validation.readthedocs.io/en/latest/rules/ArrayType/
 			if ( !v::arrayType()->validate( $value, ) ) {
 				$valid = false;
 			}
-		} else if ( $validValueType === 'isString' ) {
+		} elseif ( $validValueType === 'isString' ) {
 			if ( !v::stringType()->validate( $value ) ) {
 				$valid = false;
 			}
-		} else if ( $validValueType === 'isStringorArrayofStrings' ) {
+		} elseif ( $validValueType === 'isStringorArrayofStrings' ) {
 			// https://respect-validation.readthedocs.io/en/latest/rules/AnyOf/
 			if ( !v::anyOf( v::arrayType(), v::stringType() )->validate( $value ) ) {
 				$valid = false;
@@ -181,29 +182,29 @@ class PhotoSwipe {
 	 * Callback for onParserFirstCallInit
 	 *
 	 * @param string|null $input User-supplied input (null for self-closing tag)
-	 * @param array &$args Tag arguments, if any
-	 * @param Parser &$parser
-	 * @param PPFrame &$frame
+	 * @param array $args Tag arguments, if any
+	 * @param Parser $parser
+	 * @param PPFrame $frame
 	 * @return string HTML
 	 */
 	public static function renderTagPhotoSwipe( $input, array $args, Parser $parser, PPFrame $frame ) {
 		$extension = self::getConfigValue( 'PhotoSwipeConfig' );
-		$errors = array();
+		$errors = [];
 
-		$jsConfigVars = array( 'wgPhotoSwipeConfig' => array() );
+		$jsConfigVars = [ 'wgPhotoSwipeConfig' => [] ];
 
 		// Strip single and multi-line comments, strip trailing commas, enable multiline strings
 		if ( $input ) {
 			$input = ( new Comment )->strip( $input );
 		}
 
-		foreach ( array( 'validate', 'parse' ) as $process ) {
-			foreach ( array( 'extension', 'attribute', 'content' ) as $resource ) {
+		foreach ( [ 'validate', 'parse' ] as $process ) {
+			foreach ( [ 'extension', 'attribute', 'content' ] as $resource ) {
 				if ( $resource === 'extension' ) {
 					$configsrc = 'extension';
-				} else if ( $resource === 'attribute' ) {
+				} elseif ( $resource === 'attribute' ) {
 					$configsrc = 'args';
-				} else if ( $resource === 'content' ) {
+				} elseif ( $resource === 'content' ) {
 					$configsrc = 'input';
 				}
 
@@ -232,9 +233,7 @@ class PhotoSwipe {
 							'* ' . wfMessage( 'photoswipe-invalid-config-json' )
 								->params( $resource, $jsonerror )->parse()
 						);
-					}
-
-					else if ( v::arrayType()->validate( $$configsrc ) && count( $$configsrc ) > 0 ) {
+					} elseif ( v::arrayType()->validate( $$configsrc ) && count( $$configsrc ) > 0 ) {
 						if ( v::arrayType()->validate( $$configsrc ) ) {
 							foreach ( $$configsrc as $key => &$value ) {
 								$isValid = self::isValidConfig( $resource, strtolower( $key ), $value );
@@ -244,17 +243,17 @@ class PhotoSwipe {
 							}
 						}
 					}
-				} else if ( $process === 'parse' ) {
+				} elseif ( $process === 'parse' ) {
 					if ( v::arrayType()->validate( $$configsrc ) && count( $$configsrc ) > 0 ) {
-						//$ccKeyNames = array_map( 'strtolower', array(
-						$ccKeyNames = array(
+						// $ccKeyNames = array_map( 'strtolower', array(
+						$ccKeyNames = [
 							'mode',
 							'options',
 							'addBeginning',
 							'addEventables',
 							'addEnd',
 							'plugins'
-						);
+						];
 						foreach ( $$configsrc as $key => &$value ) {
 							// Force camelCase
 							$ccKeyName = $ccKeyNames[ array_search(
@@ -307,23 +306,23 @@ class PhotoSwipe {
 			// } else if ( strtolower( $key ) === 'addbeginning' ) {
 			// } else if ( strtolower( $key ) === 'addeventables' ) {
 			// } else if ( strtolower( $key ) === 'addend' ) {
-			} else if ( strtolower( $key ) === 'plugins' ) {
+			} elseif ( strtolower( $key ) === 'plugins' ) {
 				foreach ( $value as $k => &$v ) {
 					if ( v::stringType()->validate( $v ) ) {
 						if ( strtolower( $v ) === strtolower( 'DeepZoomPlugin' ) ) {
 							$out->addModules( 'js.photoswipe-deep-zoom-plugin' );
 							// dependency, ensure this module is loaded even if misconfigured
 							$out->addModules( 'js.photoswipe-lightbox' );
-						} else if ( strtolower( $v ) === strtolower( 'DynamicCaption' ) ) {
+						} elseif ( strtolower( $v ) === strtolower( 'DynamicCaption' ) ) {
 							$out->addModules( 'js.photoswipe-dynamic-caption-plugin' );
 							// dependency, ensure this module is loaded even if misconfigured
 							$out->addModules( 'js.photoswipe-lightbox' );
-						} else if ( strtolower( $v ) === strtolower( 'VideoPlugin' ) ) {
+						} elseif ( strtolower( $v ) === strtolower( 'VideoPlugin' ) ) {
 							$out->addModules( 'js.photoswipe-video-plugin' );
 							// dependency, ensure this module is loaded even if misconfigured
 							$out->addModules( 'js.photoswipe-lightbox' );
 						}
-					} else if ( v::arrayType()->validate( $v ) ) {
+					} elseif ( v::arrayType()->validate( $v ) ) {
 						// Enable by default if 'enabled' key isn't specified
 						if ( v::anyOf(
 							v::key( 'enabled', v::equals( true ) ),
@@ -333,11 +332,11 @@ class PhotoSwipe {
 								$out->addModules( 'js.photoswipe-deep-zoom-plugin' );
 								// dependency, ensure this module is loaded even if misconfigured
 								$out->addModules( 'js.photoswipe-lightbox' );
-							} else if ( strtolower( $k ) === strtolower( 'DynamicCaption' ) ) {
+							} elseif ( strtolower( $k ) === strtolower( 'DynamicCaption' ) ) {
 								$out->addModules( 'js.photoswipe-dynamic-caption-plugin' );
 								// dependency, ensure this module is loaded even if misconfigured
 								$out->addModules( 'js.photoswipe-lightbox' );
-							} else if ( strtolower( $k ) === strtolower( 'VideoPlugin' ) ) {
+							} elseif ( strtolower( $k ) === strtolower( 'VideoPlugin' ) ) {
 								$out->addModules( 'js.photoswipe-video-plugin' );
 								// dependency, ensure this module is loaded even if misconfigured
 								$out->addModules( 'js.photoswipe-lightbox' );

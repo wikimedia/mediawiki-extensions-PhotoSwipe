@@ -11,7 +11,7 @@
 		"MediaWiki": ">= 1.37.1"
 	},
 	"type": "parserhook",
-	"url": "https://mediawiki.org/wiki/Extension:PhotoSwipe",
+	"url": "https://www.mediawiki.org/wiki/Extension:PhotoSwipe",
 	"AutoloadClasses": {
 		"PhotoSwipe": "includes/PhotoSwipe.php"
 	},
@@ -34,9 +34,6 @@
 		"ext.photoSwipe": {
 			"localBasePath": "modules/ext.photoSwipe",
 			"remoteExtPath": "PhotoSwipe/modules/ext.photoSwipe",
-			"messages": [
-				"myextension-foo-label"
-			],
 			"packageFiles": [
 				"ext.photoSwipe.js"
 			],
@@ -52,15 +49,12 @@
 		},
 		"js.photoswipe": {
 			"packageFiles": [
-				"/ext.photoSwipe/lib/photoswipe.cjs.js"
-			],
-			"styles": [
-				"/ext.photoSwipe/lib/photoswipe.css"
+				"ext.photoSwipe/lib/photoswipe.cjs.js"
 			]
 		},
 		"js.photoswipe-lightbox": {
 			"packageFiles": [
-				"/ext.photoSwipe/lib/photoswipe-lightbox.cjs.js"
+				"ext.photoSwipe/lib/photoswipe-lightbox.cjs.js"
 			]
 		},
 		"js.photoswipe-deep-zoom-plugin": {
@@ -68,7 +62,7 @@
 				"js.photoswipe-lightbox"
 			],
 			"packageFiles": [
-				"/ext.photoSwipe/lib/photoswipe-deep-zoom-plugin.cjs.js"
+				"ext.photoSwipe/lib/photoswipe-deep-zoom-plugin.cjs.js"
 			]
 		},
 		"js.photoswipe-dynamic-caption-plugin": {
@@ -76,10 +70,7 @@
 				"js.photoswipe-lightbox"
 			],
 			"packageFiles": [
-				"/ext.photoSwipe/lib/photoswipe-dynamic-caption-plugin.cjs.js"
-			],
-			"styles": [
-				"/ext.photoSwipe/lib/photoswipe-dynamic-caption-plugin.css"
+				"ext.photoSwipe/lib/photoswipe-dynamic-caption-plugin.cjs.js"
 			]
 		},
 		"js.photoswipe-video-plugin": {
@@ -87,7 +78,7 @@
 				"js.photoswipe-lightbox"
 			],
 			"packageFiles": [
-				"/ext.photoSwipe/lib/photoswipe-video-plugin.cjs.js"
+				"ext.photoSwipe/lib/photoswipe-video-plugin.cjs.js"
 			]
 		}
 	},

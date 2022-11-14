@@ -1,11 +1,21 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es5",
+		"wikimedia/client-es6",
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
 	"rules": {
-		"no-implicit-globals": "off"
+		"no-implicit-globals": "off",
+		"no-jquery/no-global-eval": "warn",
+		"no-use-before-define": "warn",
+		"no-restricted-syntax": "warn",
+		"no-unused-vars": "warn",
+		"new-cap": "warn",
+		"dot-notation": "warn",
+		"no-var": "warn",
+		"prefer-const": "warn",
+		"no-console": "warn",
+		"no-undef": "warn"
 	}
 }
