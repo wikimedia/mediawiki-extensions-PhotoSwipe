@@ -25,7 +25,7 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die( 'This is a MediaWiki extension, and must be run from within MediaWiki.' );
 
-//namespace PhotoSwipe;
+// namespace PhotoSwipe;
 
 use Ahc\Json\Comment;
 use MediaWiki\MediaWikiServices;
@@ -300,13 +300,13 @@ class PhotoSwipe {
 					$out->addModules( 'js.photoswipe-lightbox' );
 				}
 				// This doesn't work well server-side, handle client-side
-				//if ( $value === 'withoutdynamicimport' ) {
+				// if ( $value === 'withoutdynamicimport' ) {
 				$out->addModules( 'js.photoswipe' );
-				//}
-			//} else if ( strtolower( $key ) === 'options' ) {
-			//} else if ( strtolower( $key ) === 'addbeginning' ) {
-			//} else if ( strtolower( $key ) === 'addeventables' ) {
-			//} else if ( strtolower( $key ) === 'addend' ) {
+				// }
+			// } else if ( strtolower( $key ) === 'options' ) {
+			// } else if ( strtolower( $key ) === 'addbeginning' ) {
+			// } else if ( strtolower( $key ) === 'addeventables' ) {
+			// } else if ( strtolower( $key ) === 'addend' ) {
 			} else if ( strtolower( $key ) === 'plugins' ) {
 				foreach ( $value as $k => &$v ) {
 					if ( v::stringType()->validate( $v ) ) {

@@ -28,8 +28,12 @@ module.exports = function ( grunt ) {
 				cmd: 'npm update photoswipe photoswipe-deep-zoom-plugin photoswipe-dynamic-caption-plugin',
 				callback: function ( error, stdout, stderr ) {
 					grunt.log.write( stdout );
-					if ( stderr ) { grunt.log.write( 'Error: ' + stderr );}
-					if ( error !== null ) { grunt.log.error( 'update error: ' + error ); }
+					if ( stderr ) {
+						grunt.log.write( 'Error: ' + stderr );
+					}
+					if ( error !== null ) {
+						grunt.log.error( 'update error: ' + error );
+					}
 				}
 			}
 		}
