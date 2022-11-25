@@ -82,14 +82,6 @@
 			]
 		}
 	},
-	"QUnitTestModule": {
-		"localBasePath": "tests/qunit",
-		"remoteExtPath": "PhotoSwipe/tests/qunit",
-		"dependencies": [
-		],
-		"packageFiles": [
-		]
-	},
 	"config": {
 		"PhotoSwipeConfig": {
 			"value": {
