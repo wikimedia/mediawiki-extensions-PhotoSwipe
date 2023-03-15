@@ -37,7 +37,7 @@ const isEnabled = ( plugin ) => {
 	return false;
 };
 
-let config = mw.config.get( 'wgPhotoSwipeConfig' );
+const config = mw.config.get( 'wgPhotoSwipeConfig' );
 if ( config ) {
 	console.log( 'Loading PhotoSwipe', config );
 	let dynamiccaption;
@@ -94,7 +94,7 @@ if ( config ) {
 			jQuery.globalEval( `var pswpModule = ${config.options.pswpModule}`, { nonce: config.nonce } );
 			config.options.pswpModule = pswpModule;
 		}
-		lightbox = new PhotoSwipeLightbox[ 'default' ]( config.options );
+		lightbox = new PhotoSwipeLightbox.default( config.options );
 		// Prepare lightbox variable to be globally accessible within jQuery.globalEval
 		if ( !( 'lightbox' in window ) ) {
 			window.lightbox = lightbox;
@@ -135,13 +135,13 @@ if ( config ) {
 	}
 
 	if ( isEnabled( 'DeepZoomPlugin' ) ) {
-		lightbox.deepzoomplugin = new PhotoSwipeDeepZoomPlugin[ 'default' ]( lightbox, config.plugins.DeepZoomPlugin.options );
+		lightbox.deepzoomplugin = new PhotoSwipeDeepZoomPlugin.default( lightbox, config.plugins.DeepZoomPlugin.options );
 	}
 	if ( isEnabled( 'DynamicCaption' ) ) {
-		lightbox.dynamiccaption = new PhotoSwipeDynamicCaption[ 'default' ]( lightbox, config.plugins.DynamicCaption.options );
+		lightbox.dynamiccaption = new PhotoSwipeDynamicCaption.default( lightbox, config.plugins.DynamicCaption.options );
 	}
 	if ( isEnabled( 'VideoPlugin' ) ) {
-		lightbox.videoplugin = new PhotoSwipeVideoPlugin[ 'default' ]( lightbox, config.plugins.VideoPlugin.options );
+		lightbox.videoplugin = new PhotoSwipeVideoPlugin.default( lightbox, config.plugins.VideoPlugin.options );
 	}
 
 	lightbox.init();

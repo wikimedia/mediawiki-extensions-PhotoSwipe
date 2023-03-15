@@ -16,6 +16,7 @@
 		"no-var": "warn",
 		"prefer-const": "warn",
 		"no-console": "warn",
-		"no-undef": "warn"
+		"no-undef": "warn",
+		"es-x/no-array-prototype-includes": "warn"
 	}
 }
