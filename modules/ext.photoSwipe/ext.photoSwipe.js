@@ -91,7 +91,7 @@ if ( config ) {
 			if ( !( 'require' in window ) ) {
 				window.require = require;
 			}
-			jQuery.globalEval( `var pswpModule = ${config.options.pswpModule}`, { nonce: config.nonce } );
+			jQuery.globalEval( `var pswpModule = ${ config.options.pswpModule }`, { nonce: config.nonce } );
 			config.options.pswpModule = pswpModule;
 		}
 		lightbox = new PhotoSwipeLightbox.default( config.options );
