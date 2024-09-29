@@ -14,9 +14,7 @@
  */
 
 // https://attacomsian.com/blog/javascript-check-variable-is-object
-const isObject = ( obj ) => {
-	return Object.prototype.toString.call( obj ) === '[object Object]';
-};
+const isObject = ( obj ) => Object.prototype.toString.call( obj ) === '[object Object]';
 
 const isEnabled = ( plugin ) => {
 	if ( Array.isArray( config.plugins ) ) {
