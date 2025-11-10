@@ -8,7 +8,7 @@
 	"license-name": "GPL-3.0-or-later",
 	"load_composer_autoloader": true,
 	"requires": {
-		"MediaWiki": ">= 1.37.1"
+		"MediaWiki": ">= 1.41.0"
 	},
 	"type": "parserhook",
 	"url": "https://www.mediawiki.org/wiki/Extension:PhotoSwipe",
@@ -16,7 +16,7 @@
 		"PhotoSwipe": "includes/PhotoSwipe.php"
 	},
 	"ConfigRegistry": {
-		"PhotoSwipe": "GlobalVarConfig::newInstance"
+		"PhotoSwipe": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "PhotoSwipe::onParserFirstCallInit"
